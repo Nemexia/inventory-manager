@@ -14,9 +14,13 @@ class InventoryItem:
     count: Amount
     threshold: Amount
     category: str
+    unit_cost: float
 
     def __str__(self) -> str:
         return f"{self.name} has {self.count} and is in category {self.category}"
+    
+    def total_cost(self) -> float:
+        return self.count.value * self.unit_cost
 
 
 class Inventory:
