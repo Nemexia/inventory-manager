@@ -88,6 +88,9 @@ class Application:
         self.inventory.remove_item(name)
         self.inventory_page()
     
+    def print_inventory(self) -> None:
+        self.inventory.print_inventory()
+        self.inventory_page()
 
     def exit(self) -> None:
         print("Exiting...")
