@@ -4,11 +4,10 @@ import version
 
 class Application:
     def __init__(self):
-        self.inventory:models.Inventory|None = None
+        self.inventory: models.Inventory | None = None
 
     def run(self):
         self.main_page()
-            
 
     def main_page(self) -> None:
         while True:
@@ -25,14 +24,14 @@ class Application:
                 self.load_inventory()
             elif choice == "3":
                 self.exit()
-    
+
     def new_inventory(self) -> None:
         print("New Inventory")
         print("Enter the name of the inventory:")
         name = input(">> ")
         self.inventory = models.Inventory(name)
         self.inventory_page()
-    
+
     def load_inventory(self) -> None:
         print("Load Inventory")
         print("Enter the name of the inventory:")
@@ -48,7 +47,7 @@ class Application:
             print("3: Print Inventory")
             print("4: Exit Inventory")
             choice = input(">> ")
-            
+
             if choice == "1":
                 self.add_item()
             elif choice == "2":
@@ -79,13 +78,13 @@ class Application:
         unit_cost = float(input(">> "))
         item = models.InventoryItem(name, amount, threshold, category, unit_cost)
         self.inventory.add_item(item)
-    
+
     def remove_item(self) -> None:
         print("Remove Item")
         print("Enter the name of the item:")
         name = input(">> ")
         self.inventory.remove_item(name)
-    
+
     def print_inventory(self) -> None:
         self.inventory.print_inventory()
 

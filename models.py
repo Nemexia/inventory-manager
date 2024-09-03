@@ -1,5 +1,6 @@
 import dataclasses
 
+
 @dataclasses.dataclass
 class Amount:
     value: float | int
@@ -7,6 +8,7 @@ class Amount:
 
     def __str__(self) -> str:
         return f"{self.value} {self.unit}"
+
 
 @dataclasses.dataclass
 class InventoryItem:
@@ -18,7 +20,7 @@ class InventoryItem:
 
     def __str__(self) -> str:
         return f"{self.name} has {self.amount} and is in category {self.category}"
-    
+
     def total_cost(self) -> float:
         return self.amount.value * self.unit_cost
 
@@ -38,8 +40,6 @@ class Inventory:
         print(f"Inventory has {len(self.items)} items:")
         for position, item in enumerate(self.items):
             print(f"{position}: {item}")
-    
+
     def __str__(self) -> str:
         return f"Inventory {self.name} with {len(self.items)} items"
-
-    
