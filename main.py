@@ -37,7 +37,21 @@ class Application:
         name = input(">> ")
         self.inventory = models.Inventory(name)
 
-    def exit(self):
+    def inventory_page(self) -> None:
+        print(f"Inventory {self.inventory.name}")
+        print("1: Add Item")
+        print("2: Remove Item")
+        print("3: Print Inventory")
+        choice = input(">> ")
+        
+        if choice == "1":
+            self.add_item()
+        elif choice == "2":
+            self.remove_item()
+        elif choice == "3":
+            self.print_inventory()
+
+    def exit(self) -> None:
         print("Exiting...")
         exit()
 
