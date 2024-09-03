@@ -38,7 +38,7 @@ class Application:
         name = input(">> ")
         self.inventory = models.Inventory(name)
         self.inventory_page()
-        
+
     def inventory_page(self) -> None:
         print(f"Inventory {self.inventory.name}")
         print("1: Add Item")
@@ -52,6 +52,29 @@ class Application:
             self.remove_item()
         elif choice == "3":
             self.print_inventory()
+
+    def add_amount(self) -> models.Amount:
+        print("Enter the value:")
+        value = input(">> ")
+        print("Enter the unit of the amount:")
+        unit = input(">> ")
+        return models.Amount(value, unit)
+
+    def add_item(self) -> None:
+        print("Add Item")
+        print("Enter the name of the item:")
+        name = input(">> ")
+        print("Enter the amount of the item:")
+        amount = self.add_amount()
+        print("Enter the threshold of the item:")
+        threshold = self.add_amount()
+        print("Enter the category of the item:")
+        category = input(">> ")
+        print("Enter the unit cost of the item:")
+        unit_cost = float(input(">> "))
+        item = models.InventoryItem(name, amount, threshold, category, unit_cost)
+        self.inventory.add_item(item)
+        self.inventory_page()
 
     def exit(self) -> None:
         print("Exiting...")
