@@ -1,28 +1,19 @@
 import dataclasses
 
-
-@dataclasses.dataclass
-class Amount:
-    value: float | int
-    unit: str
-
-    def __str__(self) -> str:
-        return f"{self.value} {self.unit}"
-
-
 @dataclasses.dataclass
 class InventoryItem:
     name: str
-    amount: Amount
-    threshold: Amount
+    amount: float
+    unit: str
+    threshold: float
     category: str
     unit_cost: float
 
     def __str__(self) -> str:
-        return f"{self.name} has {self.amount} and is in category {self.category}"
+        return f"{self.name} has {self.amount} {self.unit} and is in category {self.category}"
 
     def total_cost(self) -> float:
-        return self.amount.value * self.unit_cost
+        return self.amount * self.unit_cost
 
 
 class Inventory:

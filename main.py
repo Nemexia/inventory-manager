@@ -61,26 +61,21 @@ class Application:
             else:
                 print("Invalid input.")
 
-    def add_amount(self) -> models.Amount:
-        print("Enter the value:")
-        value = input(">> ")
-        print("Enter the unit of the amount:")
-        unit = input(">> ")
-        return models.Amount(value, unit)
-
     def add_item(self) -> None:
         print("Add Item")
         print("Enter the name of the item:")
         name = input(">> ")
         print("Enter the amount of the item:")
-        amount = self.add_amount()
+        amount = float(input(">> "))
+        print("Enter the unit of the amount:")
+        unit = input(">> ")
         print("Enter the threshold of the item:")
-        threshold = self.add_amount()
+        threshold = float(input(">> "))
         print("Enter the category of the item:")
         category = input(">> ")
         print("Enter the unit cost of the item:")
         unit_cost = float(input(">> "))
-        item = models.InventoryItem(name, amount, threshold, category, unit_cost)
+        item = models.InventoryItem(name, amount, unit, threshold, category, unit_cost)
         self.inventory.add_item(item)
 
     def remove_item(self) -> None:
