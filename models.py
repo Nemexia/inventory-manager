@@ -11,7 +11,8 @@ class InventoryItem:
 
 
 class Inventory:
-    def __init__(self):
+    def __init__(self, name: str):
+        self.name = name
         self.items: list[InventoryItem] = []
 
     def add_item(self, item: InventoryItem) -> None:
