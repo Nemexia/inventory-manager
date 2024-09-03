@@ -11,16 +11,16 @@ class Amount:
 @dataclasses.dataclass
 class InventoryItem:
     name: str
-    count: Amount
+    amount: Amount
     threshold: Amount
     category: str
     unit_cost: float
 
     def __str__(self) -> str:
-        return f"{self.name} has {self.count} and is in category {self.category}"
+        return f"{self.name} has {self.amount} and is in category {self.category}"
     
     def total_cost(self) -> float:
-        return self.count.value * self.unit_cost
+        return self.amount.value * self.unit_cost
 
 
 class Inventory:
