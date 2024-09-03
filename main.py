@@ -7,24 +7,23 @@ class Application:
         self.inventory:models.Inventory|None = None
 
     def run(self):
-        while True:
-            choice = self.main_page()
-            if choice == "1":
-                self.new_inventory()
-            if choice == "2":
-                self.load_inventory()
-            if choice == "3":
-                self.exit()
+        self.main_page()
+            
 
-    def main_page(self) -> str:
+    def main_page(self) -> None:
         print(f"Nemexia's Inventory Manager v{version.version}")
         print("")
-        print("choose option:")
         print("1: New Inventory")
         print("2: Load Inventory")
         print("3: Exit")
         choice = input(">> ")
-        return choice
+
+        if choice == "1":
+            self.new_inventory()
+        elif choice == "2":
+            self.load_inventory()
+        elif choice == "3":
+            self.exit()
     
     def new_inventory(self):
         print("New Inventory")
