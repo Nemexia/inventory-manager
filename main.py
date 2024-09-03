@@ -24,7 +24,7 @@ class Application:
             elif choice == "2":
                 self.load_inventory()
             elif choice == "3":
-                break
+                self.exit()
     
     def new_inventory(self) -> None:
         print("New Inventory")
@@ -87,6 +87,7 @@ class Application:
         name = input(">> ")
         self.inventory.remove_item(name)
         self.inventory_page()
+    
 
     def exit(self) -> None:
         print("Exiting...")
