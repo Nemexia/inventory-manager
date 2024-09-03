@@ -75,6 +75,13 @@ class Application:
         item = models.InventoryItem(name, amount, threshold, category, unit_cost)
         self.inventory.add_item(item)
         self.inventory_page()
+    
+    def remove_item(self) -> None:
+        print("Remove Item")
+        print("Enter the name of the item:")
+        name = input(">> ")
+        self.inventory.remove_item(name)
+        self.inventory_page()
 
     def exit(self) -> None:
         print("Exiting...")
