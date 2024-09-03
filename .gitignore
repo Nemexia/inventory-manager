@@ -1,2 +1,5 @@
 .venv
 .idea
+inventory_manager/__pycache__/
+
+tests/__pycache__/
