@@ -24,6 +24,8 @@ class Application:
                 self.load_inventory()
             elif choice == "3":
                 self.exit()
+            else:
+                print("Invalid input.")
 
     def new_inventory(self) -> None:
         print("New Inventory")
@@ -56,6 +58,8 @@ class Application:
                 self.print_inventory()
             elif choice == "4":
                 break
+            else:
+                print("Invalid input.")
 
     def add_amount(self) -> models.Amount:
         print("Enter the value:")
