@@ -30,13 +30,15 @@ class Application:
         print("Enter the name of the inventory:")
         name = input(">> ")
         self.inventory = models.Inventory(name)
+        self.inventory_page()
     
     def load_inventory(self) -> None:
         print("Load Inventory")
         print("Enter the name of the inventory:")
         name = input(">> ")
         self.inventory = models.Inventory(name)
-
+        self.inventory_page()
+        
     def inventory_page(self) -> None:
         print(f"Inventory {self.inventory.name}")
         print("1: Add Item")
