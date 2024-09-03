@@ -11,19 +11,20 @@ class Application:
             
 
     def main_page(self) -> None:
-        print(f"Nemexia's Inventory Manager v{version.version}")
-        print("")
-        print("1: New Inventory")
-        print("2: Load Inventory")
-        print("3: Exit")
-        choice = input(">> ")
+        while True:
+            print(f"Nemexia's Inventory Manager v{version.version}")
+            print("")
+            print("1: New Inventory")
+            print("2: Load Inventory")
+            print("3: Exit")
+            choice = input(">> ")
 
-        if choice == "1":
-            self.new_inventory()
-        elif choice == "2":
-            self.load_inventory()
-        elif choice == "3":
-            self.exit()
+            if choice == "1":
+                self.new_inventory()
+            elif choice == "2":
+                self.load_inventory()
+            elif choice == "3":
+                break
     
     def new_inventory(self) -> None:
         print("New Inventory")
@@ -40,18 +41,22 @@ class Application:
         self.inventory_page()
 
     def inventory_page(self) -> None:
-        print(f"Inventory {self.inventory.name}")
-        print("1: Add Item")
-        print("2: Remove Item")
-        print("3: Print Inventory")
-        choice = input(">> ")
-        
-        if choice == "1":
-            self.add_item()
-        elif choice == "2":
-            self.remove_item()
-        elif choice == "3":
-            self.print_inventory()
+        while True:
+            print(f"Inventory {self.inventory.name}")
+            print("1: Add Item")
+            print("2: Remove Item")
+            print("3: Print Inventory")
+            print("4: Exit Inventory")
+            choice = input(">> ")
+            
+            if choice == "1":
+                self.add_item()
+            elif choice == "2":
+                self.remove_item()
+            elif choice == "3":
+                self.print_inventory()
+            elif choice == "4":
+                break
 
     def add_amount(self) -> models.Amount:
         print("Enter the value:")
