@@ -5,12 +5,18 @@ class Amount:
     value: float | int
     unit: str
 
+    def __str__(self) -> str:
+        return f"{self.value} {self.unit}"
+
 @dataclasses.dataclass
 class InventoryItem:
     name: str
     count: Amount
     threshold: Amount
     category: str
+
+    def __str__(self) -> str:
+        return f"{self.name} has {self.count} and is in category {self.category}"
 
 
 class Inventory:
@@ -28,3 +34,5 @@ class Inventory:
         print(f"Inventory has {len(self.items)} items:")
         for position, item in enumerate(self.items):
             print(f"{position}: {item}")
+
+    
