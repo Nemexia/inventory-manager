@@ -34,5 +34,8 @@ class Inventory:
         print(f"Inventory has {len(self.items)} items:")
         for position, item in enumerate(self.items):
             print(f"{position}: {item}")
+    
+    def __str__(self) -> str:
+        return f"Inventory {self.name} with {len(self.items)} items"
 
     
