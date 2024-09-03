@@ -25,13 +25,13 @@ class Application:
         elif choice == "3":
             self.exit()
     
-    def new_inventory(self):
+    def new_inventory(self) -> None:
         print("New Inventory")
         print("Enter the name of the inventory:")
         name = input(">> ")
         self.inventory = models.Inventory(name)
     
-    def load_inventory(self):
+    def load_inventory(self) -> None:
         print("Load Inventory")
         print("Enter the name of the inventory:")
         name = input(">> ")
