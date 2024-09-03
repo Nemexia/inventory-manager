@@ -1,12 +1,15 @@
 import dataclasses
 
+@dataclasses.dataclass
+class Amount:
+    value: float | int
+    unit: str
 
 @dataclasses.dataclass
 class InventoryItem:
     name: str
-    count: float | int
-    threshold: float | int
-    unit: str
+    count: Amount
+    threshold: Amount
     category: str
 
 
