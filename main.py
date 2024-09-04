@@ -1,5 +1,8 @@
 import models
 import version
+import pickle
+import os
+
 
 
 class Application:
@@ -15,14 +18,14 @@ class Application:
             print("")
             print("1: New Inventory")
             print("2: Load Inventory")
-            print("3: Exit")
+            print("0: Exit")
             choice = input(">> ")
 
             if choice == "1":
                 self.new_inventory()
             elif choice == "2":
                 self.load_inventory()
-            elif choice == "3":
+            elif choice == "0":
                 self.exit()
             else:
                 print("Invalid input.")
@@ -38,7 +41,12 @@ class Application:
         print("Load Inventory")
         print("Enter the name of the inventory:")
         name = input(">> ")
-        self.inventory = models.Inventory(name)
+        try:
+            with open('saves/'+name+'.isf', 'rb') as save_file:
+                self.inventory = pickle.load(save_file)
+        except FileNotFoundError:
+            print("Inventory not found.")
+            return
         self.inventory_page()
 
     def inventory_page(self) -> None:
@@ -47,7 +55,9 @@ class Application:
             print("1: Add Item")
             print("2: Remove Item")
             print("3: Print Inventory")
-            print("4: Exit Inventory")
+            print("4: Save Inventory")
+            print("5: Delete Inventory")
+            print("0: Exit Inventory")
             choice = input(">> ")
 
             if choice == "1":
@@ -57,6 +67,10 @@ class Application:
             elif choice == "3":
                 self.print_inventory()
             elif choice == "4":
+                self.save_inventory()
+            elif choice == "5":
+                self.delete_inventory()
+            elif choice == "0":
                 break
             else:
                 print("Invalid input.")
@@ -86,6 +100,20 @@ class Application:
 
     def print_inventory(self) -> None:
         self.inventory.print_inventory()
+
+    def save_inventory(self) -> None:
+        try:    
+            with open('saves/'+self.inventory.name+'.isf', 'wb') as save_file:
+                pickle.dump(self.inventory, save_file)
+        except FileNotFoundError:
+            print("No 'saves' folder found. Creating one now...")
+            os.makedirs('saves')
+            print("Save folder created. Please Save Inventory again.")
+            return
+
+    def delete_inventory(self) -> None:
+        pass
+
 
     def exit(self) -> None:
         print("Exiting...")
