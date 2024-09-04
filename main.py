@@ -1,8 +1,8 @@
+import os
+import pickle
+
 import models
 import version
-import pickle
-import os
-
 
 
 class Application:
@@ -42,7 +42,7 @@ class Application:
         print("Enter the name of the inventory:")
         name = input(">> ")
         try:
-            with open('saves/'+name+'.isf', 'rb') as save_file:
+            with open('saves/' + name + '.isf', 'rb') as save_file:
                 self.inventory = pickle.load(save_file)
         except FileNotFoundError:
             print("Inventory not found.")
@@ -102,8 +102,8 @@ class Application:
         self.inventory.print_inventory()
 
     def save_inventory(self) -> None:
-        try:    
-            with open('saves/'+self.inventory.name+'.isf', 'wb') as save_file:
+        try:
+            with open('saves/' + self.inventory.name + '.isf', 'wb') as save_file:
                 pickle.dump(self.inventory, save_file)
         except FileNotFoundError:
             print("No 'saves' folder found. Creating one now...")
@@ -113,7 +113,6 @@ class Application:
 
     def delete_inventory(self) -> None:
         pass
-
 
     def exit(self) -> None:
         print("Exiting...")
